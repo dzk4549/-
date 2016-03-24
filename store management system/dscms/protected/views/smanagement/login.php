@@ -1,45 +1,31 @@
+
 <!DOCTYPE html>
-<html lang="zh-cn">
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>仓库管理系统</title>
-
-<style type="text/css">
-body{background-color: #804000;}
-.login{margin-top:180px;}
-.form-group{margin-bottom: 10px;}
-.text{text-align: center;color:#CCC;}
-</style>
-
+    <meta charset="utf-8">
+    <title>仓库——登陆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-
 <body>
-	<div class="container">
-		<p class="text"><span style="font-size:100px"><strong>仓库管理系统</strong></span></p>
-		
-      <div class="login">
-      	
-        <div class="login-screen">
-          <center>
-          <form class="login-form" method="post" action="index.php?r=Smanagement/Login">
-
-            <div class="form-group">
-            	
-
-              <strong>密码：</strong><input type="password" class="form-control login-field" placeholder="密码" id="password" name="password"/>
-            </div>
-
-           
-            <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" data-role="button" value="登陆">
-          </form>
-      </center>
-        </div>
-      </div>
-  </div>
-	 <script src="./js/jquery.min.js"></script>
-    <script src="./js/video.js"></script>
-    <script src="./js/flat-ui.min.js"></script>
-    <script src="./js/application.js"></script>
+    <div class = "container">
+        <form>
+            <fieldset>
+                <legend>login</legend>
+                <label>账户</label>
+                <input type="text" placeholder="请输入...">
+                <label>密码</label>
+                <input type="text" placeholder="请输入...">
+                <span class="help-block">Example block-level help text here.</span>
+                <label class="checkbox">
+                    <input type="checkbox"> Check me out
+                </label>
+                <button type="submit" class="btn">登陆</button>
+            </fieldset>
+        </form>
+    </div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

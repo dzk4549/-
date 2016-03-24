@@ -1245,3 +1245,19 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/login
 ---
+2016/03/09 09:08:46 [error] [php] require(C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\views\smanagement\login.php): failed to open stream: Permission denied (C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CBaseController.php:126)
+Stack trace:
+#0 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(869): SmanagementController->renderFile()
+#1 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(782): SmanagementController->renderPartial()
+#2 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): SmanagementController->render()
+#3 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\actions\CInlineAction.php(49): SmanagementController->actionLogin()
+#4 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(286): SmanagementController->runAction()
+#6 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(265): SmanagementController->runActionWithFilters()
+#7 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(282): SmanagementController->run()
+#8 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php(13): CWebApplication->run()
+REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/login
+in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php (11)
+in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php (13)

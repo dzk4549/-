@@ -1261,3 +1261,63 @@ Stack trace:
 REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/login
 in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php (11)
 in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php (13)
+2016/03/24 08:58:34 [error] [exception.CException] exception 'CException' with message 'SmanagementController and its behaviors do not have a method or closure named "renderparcial".' in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): CComponent->__call('renderparcial', Array)
+#1 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): SmanagementController->renderparcial('login', Array)
+#2 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\actions\CInlineAction.php(49): SmanagementController->actionLogin()
+#3 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(282): CController->run('Login')
+#7 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(141): CWebApplication->runController('smanagement/Log...')
+#8 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/Login
+---
+2016/03/24 08:58:51 [error] [exception.CException] exception 'CException' with message 'SmanagementController and its behaviors do not have a method or closure named "renderpartcial".' in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): CComponent->__call('renderpartcial', Array)
+#1 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): SmanagementController->renderpartcial('login', Array)
+#2 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\actions\CInlineAction.php(49): SmanagementController->actionLogin()
+#3 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(282): CController->run('Login')
+#7 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(141): CWebApplication->runController('smanagement/Log...')
+#8 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/Login
+---
+2016/03/24 08:58:59 [error] [exception.CException] exception 'CException' with message 'SmanagementController and its behaviors do not have a method or closure named "renderpartcial".' in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): CComponent->__call('renderpartcial', Array)
+#1 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): SmanagementController->renderpartcial('login', Array)
+#2 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\actions\CInlineAction.php(49): SmanagementController->actionLogin()
+#3 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(282): CController->run('Login')
+#7 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(141): CWebApplication->runController('smanagement/Log...')
+#8 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/Login
+---
+2016/03/24 08:59:08 [error] [exception.CException] exception 'CException' with message 'SmanagementController and its behaviors do not have a method or closure named "renderparticial".' in C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): CComponent->__call('renderparticial', Array)
+#1 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\protected\controllers\SmanagementController.php(11): SmanagementController->renderparticial('login', Array)
+#2 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\actions\CInlineAction.php(49): SmanagementController->actionLogin()
+#3 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(282): CController->run('Login')
+#7 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\web\CWebApplication.php(141): CWebApplication->runController('smanagement/Log...')
+#8 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Users\Administrator.ZX-201602262153\Documents\-\store management system\dscms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/store%20management%20system/dscms/index.php?r=smanagement/Login
+---

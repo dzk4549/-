@@ -45,7 +45,8 @@ class SmanagementController extends CController
 								'url'=>"www.baidu.com",
 								)
 							);
-						 echo json_encode($re);
+						var_dump(Yii::app()->session['var']);
+						echo json_encode($re);
 					}else{
 						$re = array(
 							'error'=>array(
@@ -89,7 +90,8 @@ class SmanagementController extends CController
 	//渲染采购表
 	public function actionPurchase()
 	{
-
+		$this->layout = false;
+		$this->render("#");
 	}
 
 	//采购表操作

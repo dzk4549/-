@@ -9,6 +9,20 @@ class staff extends CActiveRecord
 		return "storage_staff";
 	}
 
+	//增加员工信息
+	public function AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){
+		$Add = new staff;
+		$Add->Spower = $Spower;
+		$Add->SWarehouse = $SWarehouse;
+		$Add->SPlace = $SPlace;
+		$Add->SName = $SName;
+		$Add->SAge = $SAge;
+		$Add->SSex = $SSex;
+		$Add->SPhone = $SPhone;
+		$Add->SIDnum = $SIDnum;
+		$Add->save();
+	}
+
 	//登录页面查询员工数据
 	public function getLoginMessage($SID){
 		// $power = self::model()->find(array(
@@ -31,58 +45,52 @@ class staff extends CActiveRecord
 	//遍历员工表
 	public function getAllStaff(){
 		$sql = 'SELECT * FROM storage_staff';
-		$AllStaff = Yii::app()->db->createCommand($sql)->queryScalar();
+		$AllStaff = Yii::app()->db->createCommand($sql)->queryAll();
 		return $AllStaff;
 	}
 
 	//修改员工属性
-	public function changeSInformation($SID,$num,$value){
-		switch ($num) {
-			case 1:
-				$Update = self::model()->Update(array('Spower'=>$value),array('Sid'=>'$SID'));
-				if($Update->Spower == $value){
+	public function changeSInformation($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){
+				/*var_dump($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
+				//$Update = self::model()->Update(array('Spower'=>$value),array('Sid'=>'$SID'));
+				$sql = 'UPDATE `storage_staff` SET Spower = ' . $Spower . ' and SWarehouse =' . $SWarehouse . ' and SPlace =\'' . $SPlace . '\' and SName = \''. $SName . '\' and SAge = \'' . $SAge . '\' and SSex = \'' . $SSex . '\' and SPhone = \'' . $SPhone . '\' and SIDnum = \'' . $SIDnum . '\' WHERE Sid = ' . $SID;
+            	$update = Yii::app()->db->createCommand($sql)->query();
+            	var_dump($update);
+				if($update == true){
 					$re = array(
 						'error' => array(
-							'error_id'=>1,
+							'error_id'=>0,
 							)
 						);
 					echo json_encode($re);
 				}else{
 					$re = array(
 						'error'=>array(
-							'error_id'=>2,
+							'error_id'=>1,
 							));
 					echo json_encode($re);
-				}
-				break;
-
-			case 2:
-				break;
-
-			case 3:
-				break;
-
-			case 4:
-				break;
-
-			case 5:
-				break;
-
-			case 6:
-				break;
-
-			case 7:
-				break;
-
-			case 8:
-				break;
-			
-			default:
-				# code...
-				break;
+				}*/
+				
 		}
-	}
+	
 
 	//删除员工
+	public function DeleteStaff($SID){
+		$sql = 'DELETE from storage_staff where Sid ='.$SID;
+		$delete = Yii::app()->db->createCommand($sql)->query();
+		if($delete){
+			$re = array(
+					'error'=>array(
+						'error_id'=>0,
+						));
+				echo json_encode($re);
+		}else{
+			$re = array(
+				'error'=>array(
+					'error_id'=>1,
+					));
+				echo json_encode($re);
+		}
+	}
 }
 ?>

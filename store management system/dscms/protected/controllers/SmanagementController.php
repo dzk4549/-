@@ -3,12 +3,12 @@ class SmanagementController extends CController
 {
 	//登录页面
 	public function actionLogin()
-	{	
-	   	$this->layout = false;
+	{
 	   	// $p = inout::model()->update(array(array('set' => "'InoutTime'='2012-01-23'"),'where'=>"'InoutID'='5'"));
 	   	$q = inout::model()->getInoutTime();
-	   	var_dump($q);
-	 	$this->render("login",array("inout"=>$q));
+	    // var_dump($q);
+	    $this->layout= '//layouts/main';
+	 	$this->renderpartial("login",array("inout"=>$q));
 	} 
 
 	//登出页面，撤销session

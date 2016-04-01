@@ -37,8 +37,8 @@ class staff extends CActiveRecord
 
 	//查询特定员工数据
 	public function getStaff($SID){
-		$sql = 'SELECT Spower,SWarehouse,SPlace,SName,SAge,SSex,SPhone,SIDnum FROM storage_staff where Sid='.$SID;
-		$Staff = Yii::app()->db->createCommand($sql)->queryScalar();
+		$sql = 'SELECT * FROM storage_staff where Sid='.$SID;
+		$Staff = Yii::app()->db->createCommand($sql)->queryAlls();
 		return $Staff;
 	}
 
@@ -51,10 +51,11 @@ class staff extends CActiveRecord
 
 	//修改员工属性
 	public function changeSInformation($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){
-				/*var_dump($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
+			
 				//$Update = self::model()->Update(array('Spower'=>$value),array('Sid'=>'$SID'));
-				$sql = 'UPDATE `storage_staff` SET Spower = ' . $Spower . ' and SWarehouse =' . $SWarehouse . ' and SPlace =\'' . $SPlace . '\' and SName = \''. $SName . '\' and SAge = \'' . $SAge . '\' and SSex = \'' . $SSex . '\' and SPhone = \'' . $SPhone . '\' and SIDnum = \'' . $SIDnum . '\' WHERE Sid = ' . $SID;
+				$sql = 'UPDATE storage_staff SET Spower = ' . $Spower . ' , SWarehouse =' . $SWarehouse . ' ,  SPlace =\'' . $SPlace . '\'  , SName = \''. $SName . '\'  , SAge = \'' . $SAge . '\'  , SSex = \'' . $SSex . '\'  , SPhone = \'' . $SPhone . '\'  , SIDnum = \'' . $SIDnum . '\' WHERE Sid = ' . $SID;
             	$update = Yii::app()->db->createCommand($sql)->query();
+            	
             	var_dump($update);
 				if($update == true){
 					$re = array(
@@ -69,7 +70,7 @@ class staff extends CActiveRecord
 							'error_id'=>1,
 							));
 					echo json_encode($re);
-				}*/
+				}
 				
 		}
 	

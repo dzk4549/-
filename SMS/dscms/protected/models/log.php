@@ -12,9 +12,14 @@ class Log extends CActiveRecord
 	public function AddLog($SID,$State){
 		$Log = new Log;
 		$Log->Sid = $SID;
-		$Log->Lstate = "1";
+		$Log->Lstate = $States;
 		$Log->Ltime = date('Y-m-d H:i:s');
 		$Log->save();
+	}
+
+	//获取登录操作表
+	public function getLog(){
+		
 	}
 }
 ?>

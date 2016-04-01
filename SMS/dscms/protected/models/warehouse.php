@@ -39,18 +39,40 @@ class warehouse extends CActiveRecord
 	}
 
 	//修改仓库信息
-	public function UpdateWarehouse(){
-
+	public function UpdateWarehouse($WID,$WName,$WLeader,$WAddress,$WRemark){
+		$sql = 'UPDATE storage_warehouse SET WName = ' . $WName . ' , WLeader =' . $WLeader . ' ,  WAddress =\'' . $WAddress . '\'  , WRemark = \''. $WRemark . '\' WHERE Sid = ' . $WID;
+        $update = Yii::app()->db->createCommand($sql)->query();
+            	
+        var_dump($update);
+		if($update == true){
+			$re = array(
+				'error' => array(
+					'error_id'=>0,
+					)
+				);
+			echo json_encode($re);
+		}else{
+			$re = array(
+				'error'=>array(
+					'error_id'=>1,
+					));
+			echo json_encode($re);
+		}
+				
 	}
 
 	//查询特定仓库
 	public function FindWarehouse(){
-
+		$sql = 'SELECT * FROM storage_warehouse where Sid='.$SID;
+		$Warehouse = Yii::app()->db->createCommand($sql)->queryAlls();
+		return $Warehouse;
 	}
 
 	//查询所有仓库
 	public function FindAllWarehouse(){
-
+		$sql = 'SELECT * FROM storage_warehouse';
+		$AllWarehouse = Yii::app()->db->createCommand($sql)->queryAll();
+		return $AllWarehouse;
 	}
 }
 ?>

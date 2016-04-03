@@ -45,7 +45,7 @@
                     <label>账户</label>
                     <input type="text" placeholder="请输入...">
                     <label>密码</label>
-                    <input type="text" placeholder="请输入...">
+                    <input type="password" placeholder="请输入...">
                     <span class="help-block">Example block-level help text here.</span>
                     <label class="checkbox">
                         <input type="checkbox"> Check me out

@@ -1,5 +1,22 @@
 
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>仓库——登陆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -21,18 +38,22 @@
     <![endif]-->
   </head>
   <body>
-  	<!-- start header -->
-    <div id="header">
-        <a href="/markSystem/index"><img class="logo" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="logo"></a>
-        <div class="search-face">
-            <div>
-                <span>您好，123456</span>
-            </div>
-            <a href="/user/logout" class="btn btn-danger go-out">退出</a>
-        </div>
-    </div>
-    <!-- end header -->
-    <?php echo $content; ?>
+    <div class = "container" id = "login-background">
+            <form>
+                <fieldset>
+                    <legend>login</legend>
+                    <label>账户</label>
+                    <input type="text" placeholder="请输入...">
+                    <label>密码</label>
+                    <input type="password" placeholder="请输入...">
+                    <span class="help-block">Example block-level help text here.</span>
+                    <label class="checkbox">
+                        <input type="checkbox"> Check me out
+                    </label>
+                    <button type="submit" class="btn">登陆</button>
+                </fieldset>
+            </form>
+     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

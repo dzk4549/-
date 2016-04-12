@@ -196,7 +196,6 @@ class SmanagementController extends CController
 //	}
 //}
 
-
 		$this->layout = false;
 		$SID = Yii::app()->session['var'];
 		$QuitLog = Log::model()->AddLog($SID,2);

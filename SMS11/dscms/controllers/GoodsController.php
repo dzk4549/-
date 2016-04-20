@@ -5,7 +5,7 @@ class GoodsController extends CController
 	public function actionGoods()
 	{
 		$this->layout = false;
-		$this->render("#");
+		$this->render(Yii::app->session['Power']);
 	}
 
 	//添加货物信息
@@ -13,7 +13,9 @@ class GoodsController extends CController
 	{
 		if(isset($_POST['$GID'],$_POST['$GName'],$_POST['$GPrice'],$_POST['$GQuantity'],$_POST['$GToplimit'],$_POST['$GLowerlimit'],$_POST['$GWid'])&&Yii::app()->session['var']){
 			$AddGoods = goods::model()->AddGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid);
+			
 			if($AddGoods == true){
+				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],52);
 				$re = array(
 					'error'=>array(
 						'error_id'=>0,
@@ -35,15 +37,16 @@ class GoodsController extends CController
 		}
 	}
 
-	//按ID查找货物信息
+	//查找货物信息
 	public function actionGetGoods()
 	{
 		//接收传来的参数‘kind’判断进行遍历or根据货物ID查询某条信息
-		if(isset($_GET['kind'])&&Yii::app()->session['var']){
-			$Kind = $_GET['kind'];
+		if(isset($_POST['kind'])&&Yii::app()->session['SID']){
+			
+			$Kind = $_POST['kind'];
 			if($Kind == 0){
-				$q = goods::model()->getAllGoods();
-				echo json_encode($q);
+				$Aq = goods::model()->getGoods();
+				echo json_encode($Aq);
 			}else if($Kind == 1){
 				$SID = $_POST['GID'];
 				$q = goods::model()->getGoods($GID);
@@ -51,7 +54,7 @@ class GoodsController extends CController
 			}else{
 				$re = array(
 					'error' => array(
-						'error_id'=>3,
+						'error_id'=>1,
 						));
 				echo json_encode($re);
 			}
@@ -63,6 +66,7 @@ class GoodsController extends CController
 	public function actionUpdateGoods()
 	{
 		if(isset($_POST['$GID'],$_POST['$GName'],$_POST['$GPrice'],$_POST['$GQuantity'],$_POST['$GToplimit'],$_POST['$GLowerlimit'],$_POST['$GWid'])||Yii::app()->session['var']){
+			
 			$Gid = $_POST['$GID'];
 			$GName = $_POST['$GName'];
 			$GPrice = $_POST['$GPrice'];
@@ -72,7 +76,7 @@ class GoodsController extends CController
 			$GWid =$_POST['$GWid'];
 			$update = goods::model()->UpdateGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid);
 			if($update == true){
-				$UpdateLog = Log::model()->AddLog(Yii::app()->session['var'],52);
+				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],52);
 				$re = array(
 					'error'=>array(
 						'error_id'=>0,//修改成功
@@ -99,6 +103,7 @@ class GoodsController extends CController
 	public function actionDeleteGoods()
 	{
 		if(isset($Gid)&&Yii::app()->session['var']){
+			
 			$q = goods::model()->DeleteGoods($Gid);
 			if($q == false){
 				$re = array(
@@ -107,7 +112,7 @@ class GoodsController extends CController
 						));
 				echo json_encode($re);
 			}else{
-				$DeleteLog = Log::model()->AddLog(Yii::app()->session['var'],62);//62代表删除货物操作
+				$DeleteLog = Log::model()->AddLog(Yii::app()->session['SID'],62);//62代表删除货物操作
 				$re = array(
 					'error'=>array(
 						'error_id'=>0,//删除成功

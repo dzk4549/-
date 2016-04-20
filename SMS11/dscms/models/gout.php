@@ -31,7 +31,6 @@ class gout extends CActiveRecord
 		$sql = 'UPDATE storage_goods SET GQuantity = '.$GNum.'  WHERE Gid = \'' . $Gid.'\'';
         $update = Yii::app()->db->createCommand($sql)->query();
 
-        $re
 	}
 
 }

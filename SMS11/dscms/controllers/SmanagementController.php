@@ -19,7 +19,7 @@ class SmanagementController extends CController
 	   	var_dump($q);*/
 
 	   	//查看是否接收到了员工号，查看session中是否存在值
-	   	if(isset($_POST['SID'])||Yii::app()->session['var'])
+	   	if(isset($_POST['SID'])||Yii::app()->session['SID'])
 	   	{
 	   		$SID = $_POST['SID'];
 	   		$SPassword = $_POST['password'];
@@ -34,10 +34,11 @@ class SmanagementController extends CController
 	   			if($Password == $SPassword){
 
 	   				//向session赋值，存员工号
-	   				Yii::app()->session['var']= $SID;
+	   				Yii::app()->session['SID']= $SID;
+	   				Yii::app()->session['Power'] = $Power;
 	   				$this->layout = false;
 					$AddLog = Log::model()->AddLog($SID,1);
-					if($AddLog||Yii::app()->session['var']){
+					if($AddLog||Yii::app()->session['SID']){
 						$re = array(
 							'error'=>array(
 								//0号表示成功进行登录操作
@@ -45,7 +46,7 @@ class SmanagementController extends CController
 								'url'=>"www.baidu.com",
 								)
 							);
-						var_dump(Yii::app()->session['var']);
+						//var_dump(Yii::app()->session['SID']);
 						echo json_encode($re);
 					}else{
 						$re = array(
@@ -81,23 +82,9 @@ class SmanagementController extends CController
 	public function actionLogout()
 	{
 		$this->layout = false;
-		$SID = Yii::app()->session['var'];
+		$SID = Yii::app()->session['SID'];
 		$QuitLog = Log::model()->AddLog($SID,2);
-		unset(Yii::app()->session['var']);
-	}
-
-	
-	//渲染采购表
-	public function actionPurchase()
-	{
-		$this->layout = false;
-		$this->render("#");
-	}
-
-	//采购表操作
-	public function actionPOperate()
-	{
-
+		unset(Yii::app()->session['SID'],Yii::app()->session['Power']);
 	}
 }
 

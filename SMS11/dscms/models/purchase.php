@@ -11,44 +11,50 @@ class purchase extends CActiveRecord
 
 	//检查缺货情况
 	public function CheckLack(){
-		$sql = 'SELECT * FROM storage_goods WHERE Glack ='1;
-		$check = Yii::app()->db->createCommand($sql)->queryAlls();
+		$sql = 'SELECT * FROM storage_goods WHERE Glack =1';
+		$check = Yii::app()->db->createCommand($sql)->queryAll();
 
-		echo json_encode($check);
+		return $check;
+	}
+
+
+	//获取已完成的订单
+	public function GetUnFinish(){
+		$sql = 'SELECT * FROM storage_purchase WHERE PFinish =1';
+		$purchase = Yii::app()->createCommand($sql)->queryAll();
 	}
 
 	//id获取采购单
 		public function GetPurchase($Pid){
 			$sql = 'SELECT * FROM storage_purchase WHERE Pid ='.$Pid;
-			$purchase = Yii::app()->db->createCommand($sql)->queryScalar();
+			$purchase = Yii::app()->db->createCommand($sql)->queryAll();
 
-			echo json_encode($purchase);
+			return $purchase;
 		}
 
-		//获取全部采购单
+/*		//获取全部未完成的采购单
 		public function GetAllPurchase(){
-			$sql = 'SELECT * FROM storage_purchase';
-			$allpurchase = Yii::app()->db->createCommand($sql)->queryAlls();
+			$sql = 'SELECT * FROM storage_purchase WHERE PFinish =0';
+			$allpurchase = Yii::app()->db->createCommand($sql)->queryAll();
 
-			echo json_encode($allpurchase);
-		}
+			return $allpurchase;
+		}*/
 
 	//生成采购单
-	public function PurchaseForm($Sid,$Gid,$PGoodsName,$PMax,$PPrice,$PGoodsDescribe,$PWarehouse,$PWDscribe,$PSupplier,$PLevel,$PFinish){
+	/*public function PurchaseForm($Sid,$Gid,$PGoodsName,$GToplimit,$GQuantity,$PPrice,$GDescribe,$PWarehouse,$PWDscribe,$PSupplier,$PLevel){
 		
+		$PMax = $GToplimit - $GQuantity;
 		$Add = new purchase;
 		$Add->Sid = $Sid;
 		$Add->Gid = $Gid;
 		$Add->PGoodsName = $PGoodsName;
 		$Add->PMax = $PMax;
 		$Add->PPrice = $PPrice;
-		$Add->PGoodsDescribe = $PGoodsDescribe;
+		$Add->PGoodsDescribe = $GDescribe;
 		$Add->PWarehouse = $PWarehouse;
 		$Add->PWDscribe = $PWDscribe;
 		$Add->PSupplier = $PSupplier;
 		$Add->PLevel = PLevel;
-		$Add->PFinish = $PFinish;
-		$Add->PTime = date('Y-m-d');
 		$Add->save();
 
 		if($Add){
@@ -64,7 +70,7 @@ class purchase extends CActiveRecord
 					));
 			echo json_encode($re);
 		}
-	}
+	}*/
 
 	//修改
 	public function UpdatePurchase($Pid){
@@ -103,7 +109,7 @@ class purchase extends CActiveRecord
 
 	//删除
 	public function DeletePurchase($Pid){
-		if($Pid){
+		/*if($Pid){
 			$re = array(
 				'error'=>array(
 					'error_id'=>2,
@@ -115,7 +121,7 @@ class purchase extends CActiveRecord
 					'error_id'=>3,
 					));
 			echo json_encode($re);
-		}
+		}*/
 		$sql = 'DELETE from storage_purchase where Pid ='.$PID;
 		$delete = Yii::app()->db->createCommand($sql)->query();
 
@@ -133,4 +139,7 @@ class purchase extends CActiveRecord
 			echo json_encode($re);
 		}
 	}
+	
+	
+}
 ?>

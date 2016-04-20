@@ -12,14 +12,16 @@ class Log extends CActiveRecord
 	public function AddLog($SID,$State){
 		$Log = new Log;
 		$Log->Sid = $SID;
-		$Log->Lstate = $States;
+		$Log->Lstate = $State;
 		$Log->Ltime = date('Y-m-d H:i:s');
 		$Log->save();
 	}
 
 	//获取登录操作表
 	public function getLog(){
-		
+		$sql = 'SELECT * FROM storage_log';
+		$getLog = Yii::app()->db->createCommand($sql)->queryAll();
+		return  $getLog;
 	}
 }
 ?>

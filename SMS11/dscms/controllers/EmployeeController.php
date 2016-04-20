@@ -11,9 +11,10 @@ class EmployeeController extends CController
 	//增加员工信息
 	public function actionEAdd()
 	{
-		if(isset($Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum'])&&Yii::app()->session['var']){
+		if(isset($Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum'])&&Yii::app()->session['SID']){
 			$AddStaff = staff::model()->AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
 			if($AddStaff == true){
+				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],53);
 				$re = array(
 					'error'=>array(
 						'error_id'=>0,
@@ -39,10 +40,10 @@ class EmployeeController extends CController
 	public function actionEFind()
 	{
 		//接收传来的参数‘kind’判断进行遍历or根据员工ID查询某条信息
-		if(isset($_GET['kind'])&&Yii::app()->session['var']){
-			$Kind = $_GET['kind'];
+		if(isset($_POST['kind'])&&Yii::app()->session['SID']){
+			$Kind = $_POST['kind'];
 			if($Kind == 0){
-				$q = staff::model()->getAllStaff();
+				$Aq = staff::model()->getStaff();
 				echo json_encode($q);
 			}else if($Kind == 1){
 				$SID = $_POST['SID'];
@@ -51,7 +52,7 @@ class EmployeeController extends CController
 			}else{
 				$re = array(
 					'error' => array(
-						'error_id'=>3,
+						'error_id'=>1,
 						));
 				echo json_encode($re);
 			}
@@ -75,7 +76,7 @@ class EmployeeController extends CController
 			$SIDnum =$_POST['$SIDnum'];
 			$q = staff::model()->changeSInformation($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
 			if($update == true){
-				$UpdateLog = Log::model()->AddLog(Yii::app()->session['var'],53);//做记录
+				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],53);//做记录
 				$re = array(
 					'error'=>array(
 						//成功更新
@@ -104,7 +105,7 @@ class EmployeeController extends CController
 	//员工信息删除
 	public function actionEDelete()
 	{
-		if(isset($Sid)&&Yii::app()->session['var']){
+		if(isset($Sid)&&Yii::app()->session['SID']){
 			$q = staff::model()->DeleteStaff($Gid);
 			if($q == false){
 				$re = array(
@@ -113,7 +114,7 @@ class EmployeeController extends CController
 						));
 				echo json_encode($re);
 			}else{
-				$DeleteLog = Log::model()->AddLog(Yii::app()->session['var'],63);//63表示删除员工操作
+				$DeleteLog = Log::model()->AddLog(Yii::app()->session['SID'],63);//63表示删除员工操作
 				$re = array(
 					'error'=>array(
 						'error_id'=>0,//删除成功

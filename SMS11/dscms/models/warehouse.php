@@ -10,11 +10,12 @@ class warehouse extends CActiveRecord
 	}
 
 	//增加仓库信息
-	public function AddWarehouse($WName,$WLeader,$WAddress,$WRemark){
+	public function AddWarehouse($WName,$WLeader,$WAddress,$WPhone,$WRemark){
 		$Add = new warehouse;
 		$Add->WName = $WName;
 		$Add->WLeader = $WLeader;
 		$Add->WAddress = $WAddress;
+		$Add->WPhone = $WPhone;
 		$Add->WRemark = $WRemark;
 		$Add->save();
 	}
@@ -39,8 +40,8 @@ class warehouse extends CActiveRecord
 	}
 
 	//修改仓库信息
-	public function UpdateWarehouse($WID,$WName,$WLeader,$WAddress,$WRemark){
-		$sql = 'UPDATE storage_warehouse SET WName = ' . $WName . ' , WLeader =' . $WLeader . ' ,  WAddress =\'' . $WAddress . '\'  , WRemark = \''. $WRemark . '\' WHERE Sid = ' . $WID;
+	public function UpdateWarehouse($WID,$WName,$WLeader,$WAddress,$WPhone,$WRemark){
+		$sql = 'UPDATE storage_warehouse SET WName = ' . $WName . ' , WLeader =' . $WLeader . ' ,  WAddress =\'' . $WAddress . '\' ,  WPhone =\'' . $WPhone . '\' , WRemark = \''. $WRemark . '\' WHERE Sid = ' . $WID;
         $update = Yii::app()->db->createCommand($sql)->query();
             	
         var_dump($update);
@@ -61,18 +62,27 @@ class warehouse extends CActiveRecord
 				
 	}
 
+	//查询管理员
+
+	//查询仓库备注
+	public function getWRemark($WName){
+		$sql = 'SELECT WRemark FROM storage_warehouse where WName='.$WName;
+		$WDescribe = Yii::app()->db->createCommand($sql)->queryAll();
+		return $WDescribe;
+	}
+
 	//查询特定仓库
-	public function FindWarehouse(){
-		$sql = 'SELECT * FROM storage_warehouse where Sid='.$SID;
-		$Warehouse = Yii::app()->db->createCommand($sql)->queryAlls();
+	public function getWarehouse($WID = 0){
+		$sql = $WID == 0 ? 'SELECT * FROM storage_warehouse' : 'SELECT * FROM storage_warehouse where Wid='.$WID;
+		$Warehouse = Yii::app()->db->createCommand($sql)->queryAll();
 		return $Warehouse;
 	}
 
-	//查询所有仓库
-	public function FindAllWarehouse(){
+	/*//查询所有仓库
+	public function getAllWarehouse(){
 		$sql = 'SELECT * FROM storage_warehouse';
 		$AllWarehouse = Yii::app()->db->createCommand($sql)->queryAll();
 		return $AllWarehouse;
-	}
+	}*/
 }
 ?>

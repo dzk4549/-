@@ -35,19 +35,19 @@ class staff extends CActiveRecord
 		return $power;
 	}
 
-	//查询特定员工数据
-	public function getStaff($SID){
-		$sql = 'SELECT * FROM storage_staff where Sid='.$SID;
-		$Staff = Yii::app()->db->createCommand($sql)->queryAlls();
+	//查询员工数据
+	public function getStaff($SID = 0){
+		$sql = $SID == 0 ? 'SELECT * FROM storage_staff' : 'SELECT * FROM storage_staff where Sid='.$SID;
+		$Staff = Yii::app()->db->createCommand($sql)->queryAll();
 		return $Staff;
 	}
 
-	//遍历员工表
+	/*//遍历员工表
 	public function getAllStaff(){
 		$sql = 'SELECT * FROM storage_staff';
 		$AllStaff = Yii::app()->db->createCommand($sql)->queryAll();
 		return $AllStaff;
-	}
+	}*/
 
 	//修改员工属性
 	public function changeSInformation($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){

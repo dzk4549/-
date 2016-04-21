@@ -1,13 +1,6 @@
 <?php
 class GoodsController extends CController
 {
-	//货物管理页面渲染
-	public function actionGoods()
-	{
-		$this->layout = false;
-		$this->render("#");
-	}
-
 	//添加货物信息
 	public function actionAddGoods()
 	{

@@ -79,18 +79,25 @@ class goods extends CActiveRecord
 				
 	}
 
-	//查询特定货物信息
-	public function FindGoods($GID){
-		$sql = 'SELECT * FROM storage_goods where Gid='.$GID;
-		$Goods = Yii::app()->db->createCommand($sql)->queryAlls();
-		return $Goods;
-	}
+//	//查询特定货物信息
+//	public function FindGoods($GID){
+//		$sql = 'SELECT * FROM storage_goods where Gid='.$GID;
+//		$Goods = Yii::app()->db->createCommand($sql)->queryAlls();
+//		return $Goods;
+//	}
+//
+//	//查询所有货物信息
+//	public function FindAllGoods(){
+//		$sql = 'SELECT * FROM storage_goods';
+//		$AllGoods = Yii::app()->db->createCommand($sql)->queryAll();
+//		return $AllGoods;
+//	}
 
-	//查询所有货物信息
-	public function FindAllGoods(){
-		$sql = 'SELECT * FROM storage_goods';
-		$AllGoods = Yii::app()->db->createCommand($sql)->queryAll();
-		return $AllGoods;
+	//查询货物信息
+	public function getStaff($GID = 0){
+		$sql = $GID == 0 ? 'SELECT * FROM storage_goods' : 'SELECT * FROM storage_goods WHERE Gid = '. $GID;
+		$Goods = Yii::app()->db->createCommand($sql)->queryAll();
+		return $Goods;
 	}
 
 	//对进出货操作以后的货物数据作出调整

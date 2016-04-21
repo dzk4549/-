@@ -1,13 +1,6 @@
 <?php
 class WarehouseController extends CController
 {
-	//仓库管理页面渲染
-	public function actionWarehouse()
-	{
-		$this->layout = false;
-		$this->render("#");
-	}
-
 	//查询仓库信息
 	public function actionGetWarehouse()
 	{
@@ -18,7 +11,7 @@ class WarehouseController extends CController
 				$q = warehouse::model()->getAllWarehouse();
 				echo json_encode($q);
 			}else if($Kind == 1){
-				$SID = $_POST['WID'];
+				$WID = $_POST['WID'];
 				$q = warehouse::model()->getWarehouse($WID);
 				echo json_encode($q);
 			}else{

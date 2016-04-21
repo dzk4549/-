@@ -4,7 +4,7 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"><a href="index.php?r=smanagement/Index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>仓库管理</a></div>
   </div>
 <!--End-breadcrumbs-->
 
@@ -13,15 +13,9 @@
     <div class="row-fluid"><button data-toggle="modal" data-target="#mymodal" class="btn btn-danger btn-large fr"><i class="icon-plus"></i>添加仓库</button></div>
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> <span class="label label-important">1</span> 仓库A </a> </li>
-        <li class="bg_lg span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_ly span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A </a> </li>
-        <li class="bg_lo span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_ls span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_lo span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_ls span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_lb span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
-        <li class="bg_lg span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i> 仓库A</a> </li>
+        <?php foreach($whlist as $key => $val){
+          echo '<li class="bg_ls span3" style="height: 100px"> <a href="index.php?r=smanagement/Warehouse"> <i class="icon-home"></i>'.$val['WName'].'</a> </li>';
+        } ?>
       </ul>
     </div>
 

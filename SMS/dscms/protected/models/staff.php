@@ -9,7 +9,7 @@ class staff extends CActiveRecord
 		return "storage_staff";
 	}
 
-	//增加员工信息
+	//增加员工记录
 	public function AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){
 		$Add = new staff;
 		$Add->Spower = $Spower;
@@ -21,32 +21,6 @@ class staff extends CActiveRecord
 		$Add->SPhone = $SPhone;
 		$Add->SIDnum = $SIDnum;
 		$Add->save();
-	}
-
-	//登录页面查询员工数据
-	public function getLoginMessage($SID){
-		// $power = self::model()->find(array(
-		// 	'select' => array('Spower'),
-		// 	'condition'=>"Sid = '$SID'",
-		// 	));
-
-		$sql = 'SELECT Spower FROM storage_staff where Sid='.$SID;
-		$power = Yii::app()->db->createCommand($sql)->queryScalar();
-		return $power;
-	}
-
-	//查询特定员工数据
-	public function getStaff($SID){
-		$sql = 'SELECT * FROM storage_staff where Sid='.$SID;
-		$Staff = Yii::app()->db->createCommand($sql)->queryAlls();
-		return $Staff;
-	}
-
-	//遍历员工表
-	public function getAllStaff(){
-		$sql = 'SELECT * FROM storage_staff';
-		$AllStaff = Yii::app()->db->createCommand($sql)->queryAll();
-		return $AllStaff;
 	}
 
 	//修改员工属性
@@ -92,6 +66,13 @@ class staff extends CActiveRecord
 					));
 				echo json_encode($re);
 		}
+	}
+
+	//查询员工信息
+	public function getStaff($SID = 0){
+		$sql = $SID == 0 ? 'SELECT * FROM storage_staff' : 'SELECT * FROM storage_staff WHERE Sid = '. $SID;
+		$Staff = Yii::app()->db->createCommand($sql)->queryAll();
+		return $Staff;
 	}
 }
 ?>

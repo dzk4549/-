@@ -61,18 +61,18 @@ class warehouse extends CActiveRecord
 				
 	}
 
-	//查询特定仓库
-	public function FindWarehouse(){
-		$sql = 'SELECT * FROM storage_warehouse where Sid='.$SID;
-		$Warehouse = Yii::app()->db->createCommand($sql)->queryAlls();
+	//由员工号查询仓库信息
+	public function getWarehouseBySid($SID){
+		$sql = 'SELECT * FROM storage_warehouse WHERE Wleader = ' . $SID;
+		$Warehouse = Yii::app()->db->createCommand($sql)->queryAll();
 		return $Warehouse;
 	}
 
-	//查询所有仓库
-	public function FindAllWarehouse(){
-		$sql = 'SELECT * FROM storage_warehouse';
-		$AllWarehouse = Yii::app()->db->createCommand($sql)->queryAll();
-		return $AllWarehouse;
+	//查询仓库信息
+	public function getWarehouse($WID = 0){
+		$sql = $WID == 0 ? 'SELECT * FROM storage_warehouse' : 'SELECT * FROM storage_warehouse WHERE Wid = '. $WID;
+		$Warehouse = Yii::app()->db->createCommand($sql)->queryAll();
+		return $Warehouse;
 	}
 }
 ?>

@@ -3,7 +3,7 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a><a href="#" class="current">仓库管理</a></div>
+    <div id="breadcrumb"><a href="index.php?r=smanagement/Warehouse" class="current">仓库详情</a></div>
   </div>
 <!--End-breadcrumbs-->
 

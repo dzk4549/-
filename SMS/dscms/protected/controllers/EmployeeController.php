@@ -1,13 +1,6 @@
 <?php
 class EmployeeController extends CController
 {
-		//员工信息管理页面渲染
-	public function actionEmployee()
-	{
-		$this->layout = false;
-		$this->render("Employee");
-	}
-
 	//增加员工信息
 	public function actionEAdd()
 	{

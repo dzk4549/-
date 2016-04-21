@@ -2,7 +2,7 @@
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a><a href="#" class="current">出货管理</a></div>
+        <div id="breadcrumb"><a href="#" class="tip-bottom"><i class="icon-home"></i>进出货管理</a><a href="#" class="current">出货管理</a></div>
     </div>
     <!--End-breadcrumbs-->
     <div class="container-fluid">

@@ -4,7 +4,7 @@ class EmployeeController extends CController
 	//增加员工信息
 	public function actionEAdd()
 	{
-		if(isset($Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum'])&&Yii::app()->session['var']){
+		if(isset($Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum']&&Yii::app()->session['var']){
 			$AddStaff = staff::model()->AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
 			if($AddStaff == true){
 				$re = array(

@@ -36,7 +36,7 @@ class WarehouseController extends CController
 	//添加仓库
 	public function actionWAdd()
 	{
-		if(isset($_POST['$WName'],$_POST['$WLeader'],$_POST['$WAddress'],$_POST['$WRemarks'])||Yii::app()->session['SID']){
+		if(Yii::app()->session['SID']){
 			$AddWarehouse = warehouse::model()->AddWarehouse($WName,$WLeader,$WAddress,$WRemarks);
 			$this->render(Yii::app->session['Power']);
 			if($AddWarehouse == true){
@@ -65,12 +65,12 @@ class WarehouseController extends CController
 	//修改仓库设置
 	public function actionWChange()
 	{
-		if(isset($_POST['$Wid'],$_POST['$WName'],$_POST['$WLeader'],$_POST['$WAddress'],$_POST['$WRemarks'])||Yii::app()->session['var']){
-			$Wid = $_POST['$Wid'];
-			$WName = $_POST['$WName'];
-			$WLeader = $_POST['$WLeader'];
-			$WAddress = $_POST['$WAddress'];
-			$WRemarks = $_POST['$WRemarks'];
+		if(isset($_POST['Wid'],$_POST['WName'],$_POST['WLeader'],$_POST['WAddress'],$_POST['WRemarks'])||Yii::app()->session['SID']){
+			$Wid = $_POST['Wid'];
+			$WName = $_POST['WName'];
+			$WLeader = $_POST['WLeader'];
+			$WAddress = $_POST['WAddress'];
+			$WRemarks = $_POST['WRemarks'];
 			$update = warehouse::model()->UpdateWarehouse($Wid,$WName,$WLeader,$WAddress,$WRemarks);
 			$this->render(Yii::app->session['Power']);
 			if($update == true){
@@ -99,7 +99,7 @@ class WarehouseController extends CController
 	//删除仓库信息
 	public function actionWDelete()
 	{
-		if(isset($Wid)&&Yii::app()->session['SID']){
+		if(isset($_POST['Wid'])&&Yii::app()->session['SID']){
 			$this->render(Yii::app->session['Power']);
 			$q = warehouse::model()->DeleteWarehouse($Wid);
 			if($q == false){

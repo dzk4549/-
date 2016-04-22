@@ -21,6 +21,8 @@ class staff extends CActiveRecord
 		$Add->SPhone = $SPhone;
 		$Add->SIDnum = $SIDnum;
 		$Add->save();
+
+		return $Add;
 	}
 
 	//登录页面查询员工数据

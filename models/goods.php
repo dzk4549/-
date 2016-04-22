@@ -25,6 +25,8 @@ class goods extends CActiveRecord
 		}
 		$Add->GWid = $GWid;
 		$Add->save();
+
+		return $Add;
 	}
 	
 
@@ -32,19 +34,8 @@ class goods extends CActiveRecord
 	public function DeleteGoods($GID){
 		$sql = 'DELETE from storage_goods where Gid ='.$GID;
 		$delete = Yii::app()->db->createCommand($sql)->query();
-		if($delete){
-			$re = array(
-					'error'=>array(
-						'error_id'=>0,
-						));
-				echo json_encode($re);
-		}else{
-			$re = array(
-				'error'=>array(
-					'error_id'=>1,
-					));
-				echo json_encode($re);
-		}
+		
+		return $delete;
 	}
 
 	//修改货物信息
@@ -60,22 +51,7 @@ class goods extends CActiveRecord
         	$check = Yii::app()->db->createCommand($sql)->query();
         }
         
-            	
-        var_dump($update);
-		if($update == true){
-			$re = array(
-				'error' => array(
-					'error_id'=>0,
-					)
-				);
-			echo json_encode($re);
-		}else{
-			$re = array(
-				'error'=>array(
-					'error_id'=>1,
-				));
-			echo json_encode($re);
-		}
+        return $check;
 				
 	}
 

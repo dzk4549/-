@@ -18,6 +18,8 @@ class warehouse extends CActiveRecord
 		$Add->WPhone = $WPhone;
 		$Add->WRemark = $WRemark;
 		$Add->save();
+
+		return $Add;
 	}
 
 	//删除仓库信息

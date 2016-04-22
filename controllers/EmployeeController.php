@@ -11,7 +11,7 @@ class EmployeeController extends CController
 	//增加员工信息
 	public function actionEAdd()
 	{
-		if(isset($Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum'])&&Yii::app()->session['SID']){
+		if(Yii::app()->session['SID']){
 			$AddStaff = staff::model()->AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
 			if($AddStaff == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],53);
@@ -64,16 +64,16 @@ class EmployeeController extends CController
 	public function actionEChange()
 	{
 		
-		if(isset($SID = $_POST['$SID'],$Spower = $_POST['$Spower'],$SWarehouse = $_POST['$SWarehouse'],$SPlace = $_POST['$SPlace'],$SName = $_POST['$SName'],$SAge = $_POST['$SAge'],$SSex =$_POST['$SSex'],$SPhone =$_POST['$SPhone'],$SIDnum =$_POST['$SIDnum'])||Yii::app()->session['var']){
-			$SID = $_POST['$SID'];
-			$Spower = $_POST['$Spower'];
-			$SWarehouse = $_POST['$SWarehouse'];
-			$SPlace = $_POST['$SPlace'];
-			$SName = $_POST['$SName'];
-			$SAge = $_POST['$SAge'];
-			$SSex =$_POST['$SSex'];
-			$SPhone =$_POST['$SPhone'];
-			$SIDnum =$_POST['$SIDnum'];
+		if(Yii::app()->session['SID']){
+			$SID = $_POST['SID'];
+			$Spower = $_POST['Spower'];
+			$SWarehouse = $_POST['SWarehouse'];
+			$SPlace = $_POST['SPlace'];
+			$SName = $_POST['SName'];
+			$SAge = $_POST['SAge'];
+			$SSex =$_POST['SSex'];
+			$SPhone =$_POST['SPhone'];
+			$SIDnum =$_POST['SIDnum'];
 			$q = staff::model()->changeSInformation($SID,$Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
 			if($update == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],53);//做记录

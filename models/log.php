@@ -15,6 +15,8 @@ class Log extends CActiveRecord
 		$Log->Lstate = $State;
 		$Log->Ltime = date('Y-m-d H:i:s');
 		$Log->save();
+
+		return $Log;
 	}
 
 	//获取登录操作表

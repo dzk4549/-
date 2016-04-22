@@ -11,7 +11,7 @@ class GoodsController extends CController
 	//添加货物信息
 	public function actionAddGoods()
 	{
-		if(isset($_POST['$GID'],$_POST['$GName'],$_POST['$GPrice'],$_POST['$GQuantity'],$_POST['$GToplimit'],$_POST['$GLowerlimit'],$_POST['$GWid'])&&Yii::app()->session['var']){
+		if(isset($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid'])&&Yii::app()->session['SID']){
 			$AddGoods = goods::model()->AddGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid);
 			
 			if($AddGoods == true){
@@ -65,15 +65,15 @@ class GoodsController extends CController
 	//修改货物信息
 	public function actionUpdateGoods()
 	{
-		if(isset($_POST['$GID'],$_POST['$GName'],$_POST['$GPrice'],$_POST['$GQuantity'],$_POST['$GToplimit'],$_POST['$GLowerlimit'],$_POST['$GWid'])||Yii::app()->session['var']){
+		if(isset($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid'])||Yii::app()->session['SID']){
 			
-			$Gid = $_POST['$GID'];
-			$GName = $_POST['$GName'];
-			$GPrice = $_POST['$GPrice'];
-			$GQuantity = $_POST['$GQuantity'];
-			$GToplimit = $_POST['$GToplimit'];
-			$GLowerlimit = $_POST['$GLowerlimit'];
-			$GWid =$_POST['$GWid'];
+			$Gid = $_POST['GID'];
+			$GName = $_POST['GName'];
+			$GPrice = $_POST['GPrice'];
+			$GQuantity = $_POST['GQuantity'];
+			$GToplimit = $_POST['GToplimit'];
+			$GLowerlimit = $_POST['GLowerlimit'];
+			$GWid =$_POST['GWid'];
 			$update = goods::model()->UpdateGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid);
 			if($update == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],52);
@@ -102,7 +102,7 @@ class GoodsController extends CController
 	//删除货物信息
 	public function actionDeleteGoods()
 	{
-		if(isset($Gid)&&Yii::app()->session['var']){
+		if(isset($_POST['Gid'])&&Yii::app()->session['SID']){
 			
 			$q = goods::model()->DeleteGoods($Gid);
 			if($q == false){

@@ -19,9 +19,11 @@ class purchase extends CActiveRecord
 
 
 	//获取已完成的订单
-	public function GetUnFinish(){
-		$sql = 'SELECT * FROM storage_purchase WHERE PFinish =1';
-		$purchase = Yii::app()->createCommand($sql)->queryAll();
+	public function GetFinish(){
+		$sql = 'SELECT * FROM storage_gin WHERE GFinish =1';
+		$finish = Yii::app()->createCommand($sql)->queryAll();
+
+		return $finish;
 	}
 
 	//id获取采购单

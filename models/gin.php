@@ -19,6 +19,16 @@ class gin extends CActiveRecord
 		$Add->time = date('Y-m-d');
 		$Add->supplier = $supplier;
 		$Add->save();
+
+		return $Add;
+	}
+
+	//查找进货表
+	public function getGoodsIn($WName,$finish){//1为已完成，0为未完成。
+		$sql = 'SELECT * FROM storage_gin WHERE WName =\''.$WName.'\' AND GFinish ='.$finish;
+		$gin = Yii::app()->createCommand($sql)->queryAll();
+
+		return $gin;
 	}
 
 	//仓库管理员收货确认
@@ -35,6 +45,8 @@ class gin extends CActiveRecord
 
 		$sql = 'UPDATE storage_goods SET GQuantity = '.$GNum.'  WHERE Gid = \'' . $Gid.'\'';
         $update = Yii::app()->db->createCommand($sql)->query();
+
+        return $update;
 	}
 
 }

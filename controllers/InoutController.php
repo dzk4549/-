@@ -8,15 +8,47 @@ class InoutController extends CController
 		$this->render(Yii::app->session['Power']);
 	}
 
-	//根据仓库获得进货单
-	public function actionGetIn(){
+	//根据仓库获得未完成进货单
+	public function actionGetUnIn(){
+		$WName = $_POST['WName'];
+		$check = $_POST['check'];//判断查找已完成的还是未完成的进货单，1为已完成，0为未完成
+		if($check == 0){
+			$getin = gin::model()->getGoodsIn($WName,0);
+		}else if($check == 1){
+			$getin = gin::model()->getGoodsIn($WName,1);
+		}
+		
+		if($getin){
+			echo json_encode($getin);
+		}else{
+			$re = array(
+				'error'=>array(
+					'error_id'=>1,
+					));
+		}
+	}
 
+
+	//根据仓库获得出货单
+	public function actionGetOut(){
+		$WName = $_POST['WName'];
+
+		$getout = gout::model()->getGoodsOut($WName);
+
+		if($getout){
+			echo json_encode($getout);
+		}else{
+			$re = array(
+				'error'=>array(
+					'error_id'=>1,
+					));
+		}
 	}
 
 	//生成进货单
 	public function actionGoodsIn(){
 
-		if(isset($_POST['$GID'],$_POST['$WName'],$_POST['$inNum'],$_POST['$inPrice'],$_POST['$supplier'],$_POST['$GWid'])&&Yii::app()->session['SID']){
+		if(isset($_POST['GID'],$_POST['WName'],$_POST['inNum'],$_POST['inPrice'],$_POST['supplier'],$_POST['GWid'])&&Yii::app()->session['SID']){
 			$GoodsIn = goods::model()->AddGoods($Gid,$WName,$inNum,$inPrice,$supplier,$GWid);
 			
 			if($GoodsIn == true){
@@ -41,11 +73,12 @@ class InoutController extends CController
 			echo json_encode($re);
 		}
 	}
+	
 
 	//进货确认操作
 	public function actionCheckIn()
 	{
-		$id = $_POST['$id'];
+		$id = $_POST['id'];
 		$q = gin::model()->GinCheck($id);
 		if($q == true){
 		$DeleteLog = Log::model()->AddLog(Yii::app()->session['SID'],3);//代表进货操作
@@ -68,7 +101,7 @@ class InoutController extends CController
 	public function actionGoodsOut()
 	{
 
-		if(isset($_POST['$GID'],$_POST['$Wid'],$_POST['$outNum'],$_POST['$outPrice'],$_POST['$customer'])&&Yii::app()->session['SID']){
+		if(isset($_POST['GID'],$_POST['Wid'],$_POST['outNum'],$_POST['outPrice'],$_POST['customer'])&&Yii::app()->session['SID']){
 		$q = gout::model()->Goodsout($Gid,$Wid,$outNum,$outPrice,$customer);
 		if($q == true){
 				$re = array(

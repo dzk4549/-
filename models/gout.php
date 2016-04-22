@@ -31,6 +31,16 @@ class gout extends CActiveRecord
 		$sql = 'UPDATE storage_goods SET GQuantity = '.$GNum.'  WHERE Gid = \'' . $Gid.'\'';
         $update = Yii::app()->db->createCommand($sql)->query();
 
+        return $Add;
+
+	}
+
+	//查找出货表
+	public function getGoodsOut($WName){
+		$sql = 'SELECT * FROM storage_gout WHERE WName =\''.$WName.'\'';
+		$gout = Yii::app()->createCommand($sql)->queryAll();
+
+		return $gout;
 	}
 
 }

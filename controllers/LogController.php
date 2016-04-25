@@ -1,7 +1,7 @@
 <?php
 class LogController extends CController
 {
-	//页面渲染
+	//页面渲染++
 	public function actionLog(){
 		$this->layout = false;
 		$this->render(Yii::app->session['Power']);

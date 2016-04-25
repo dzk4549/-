@@ -9,7 +9,7 @@ class gin extends CActiveRecord
 		return "storage_gin";
 	}
 
-	//生成进货
+	//生成进货==
 	public function Goodsin($Gid,$Wid,$inNum,$inPrice,$supplier){
 		$Add = new gin;
 		$Add->Gid = $Gid;

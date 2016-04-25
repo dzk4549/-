@@ -1,7 +1,7 @@
 <?php
 class WarehouseController extends CController
 {
-	//仓库管理页面渲染
+	//仓库管理页面渲染++
 	public function actionWarehouse()
 	{
 		$this->layout = false;
@@ -36,9 +36,9 @@ class WarehouseController extends CController
 	//添加仓库
 	public function actionWAdd()
 	{
-		if(Yii::app()->session['SID']){
-			$AddWarehouse = warehouse::model()->AddWarehouse($WName,$WLeader,$WAddress,$WRemarks);
-			$this->render(Yii::app->session['Power']);
+		if(isset($_POST['WName'],$_POST['WLeader'],$_POST['WAddress'],$_POST['WRemarks'])&&Yii::app()->session['SID']){
+			$AddWarehouse = warehouse::model()->AddWarehouse($_POST['WName'],$_POST['WLeader'],$_POST['WAddress'],$_POST['WRemarks']);
+			
 			if($AddWarehouse == true){
 				$re = array(
 					$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],51);
@@ -100,8 +100,8 @@ class WarehouseController extends CController
 	public function actionWDelete()
 	{
 		if(isset($_POST['Wid'])&&Yii::app()->session['SID']){
-			$this->render(Yii::app->session['Power']);
-			$q = warehouse::model()->DeleteWarehouse($Wid);
+			
+			$q = warehouse::model()->DeleteWarehouse($_POST['Wid']);
 			if($q == false){
 				$re = array(
 					'error'=>array(

@@ -1,7 +1,7 @@
 <?php
 class EmployeeController extends CController
 {
-		//员工信息管理页面渲染
+		//员工信息管理页面渲染++
 	public function actionEmployee()
 	{
 		$this->layout = false;
@@ -11,8 +11,9 @@ class EmployeeController extends CController
 	//增加员工信息
 	public function actionEAdd()
 	{
-		if(Yii::app()->session['SID']){
-			$AddStaff = staff::model()->AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum);
+		if(isset($_POST['Spower'],$_POST['SWarehouse'],$_POST['SPlace'],$_POST['SName'],$_POST['SAge'],$_POST['SSex'],$_POST['SPhone'],$_POST['SIDnum'])&&Yii::app()->session['SID']){
+
+			$AddStaff = staff::model()->AddStaff($_POST['Spower'],$_POST['SWarehouse'],$_POST['SPlace'],$_POST['SName'],$_POST['SAge'],$_POST['SSex'],$_POST['SPhone'],$_POST['SIDnum']);
 			if($AddStaff == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],53);
 				$re = array(
@@ -105,8 +106,9 @@ class EmployeeController extends CController
 	//员工信息删除
 	public function actionEDelete()
 	{
-		if(isset($Sid)&&Yii::app()->session['SID']){
-			$q = staff::model()->DeleteStaff($Gid);
+		if(isset($_POST['Sid'])&&Yii::app()->session['SID']){
+
+			$q = staff::model()->DeleteStaff($_POST['Sid']);
 			if($q == false){
 				$re = array(
 					'error'=>array(

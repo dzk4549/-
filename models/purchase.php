@@ -9,7 +9,7 @@ class purchase extends CActiveRecord
 		return "storage_purchase";
 	}
 
-	//检查缺货情况
+	//检查缺货情况==
 	public function CheckLack(){
 		$sql = 'SELECT * FROM storage_goods WHERE Glack =1';
 		$check = Yii::app()->db->createCommand($sql)->queryAll();

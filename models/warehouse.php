@@ -9,7 +9,7 @@ class warehouse extends CActiveRecord
 		return "storage_warehouse";
 	}
 
-	//增加仓库信息
+	//增加仓库信息==
 	public function AddWarehouse($WName,$WLeader,$WAddress,$WPhone,$WRemark){
 		$Add = new warehouse;
 		$Add->WName = $WName;

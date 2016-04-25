@@ -1,7 +1,7 @@
 <?php
 class purchaseController extends CController
 {
-	//采购页面渲染
+	//采购页面渲染++
 	public function actionGoodsinout()
 	{
 		$this->layout = false;

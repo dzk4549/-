@@ -9,7 +9,7 @@ class goods extends CActiveRecord
 		return "storage_goods";
 	}
 
-	//添加货物信息
+	//添加货物信息==
 	public function AddGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid){
 		$Add = new goods;
 		$Add->Gid = $Gid;

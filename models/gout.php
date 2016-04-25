@@ -9,7 +9,7 @@ class gout extends CActiveRecord
 		return "storage_gout";
 	}
 
-	//出货单
+	//出货单==
 	public function Goodsout($Gid,$Wid,$outNum,$outPrice,$customer){
 
 		

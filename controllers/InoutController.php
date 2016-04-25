@@ -1,7 +1,7 @@
 <?php
 class InoutController extends CController
 {
-	//货物进出页面渲染
+	//货物进出页面渲染++
 	public function actionGoodsinout()
 	{
 		$this->layout = false;
@@ -9,7 +9,7 @@ class InoutController extends CController
 	}
 
 	//根据仓库获得未完成进货单
-	public function actionGetUnIn(){
+	public function actionGetIn(){
 		$WName = $_POST['WName'];
 		$check = $_POST['check'];//判断查找已完成的还是未完成的进货单，1为已完成，0为未完成
 		if($check == 0){
@@ -49,7 +49,7 @@ class InoutController extends CController
 	public function actionGoodsIn(){
 
 		if(isset($_POST['GID'],$_POST['WName'],$_POST['inNum'],$_POST['inPrice'],$_POST['supplier'],$_POST['GWid'])&&Yii::app()->session['SID']){
-			$GoodsIn = goods::model()->AddGoods($Gid,$WName,$inNum,$inPrice,$supplier,$GWid);
+			$GoodsIn = goods::model()->AddGoods($_POST['GID'],$_POST['WName'],$_POST['inNum'],$_POST['inPrice'],$_POST['supplier'],$_POST['GWid']);
 			
 			if($GoodsIn == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],3);
@@ -102,7 +102,7 @@ class InoutController extends CController
 	{
 
 		if(isset($_POST['GID'],$_POST['Wid'],$_POST['outNum'],$_POST['outPrice'],$_POST['customer'])&&Yii::app()->session['SID']){
-		$q = gout::model()->Goodsout($Gid,$Wid,$outNum,$outPrice,$customer);
+		$q = gout::model()->Goodsout($_POST['GID'],$_POST['Wid'],$_POST['outNum'],$_POST['outPrice'],$_POST['customer']);
 		if($q == true){
 				$re = array(
 					'error'=>array(

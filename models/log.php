@@ -8,7 +8,7 @@ class Log extends CActiveRecord
 	public function tableName(){
 		return "storage_log";
 	}
-	//接收传过来的员工ID和操作代码，存入登录操作表
+	//接收传过来的员工ID和操作代码，存入登录操作表==
 	public function AddLog($SID,$State){
 		$Log = new Log;
 		$Log->Sid = $SID;

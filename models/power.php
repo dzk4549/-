@@ -9,7 +9,7 @@ class power extends CActiveRecord
 		return "storage_power";
 	}
 
-	//返回权限密码
+	//返回权限密码==
 	public function getPassword($Power){
 		$Power = (int)$Power;
 		 $sql = 'SELECT password FROM storage_power WHERE id = '.$Power;

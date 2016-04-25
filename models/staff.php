@@ -9,7 +9,7 @@ class staff extends CActiveRecord
 		return "storage_staff";
 	}
 
-	//增加员工信息
+	//增加员工信息==
 	public function AddStaff($Spower,$SWarehouse,$SPlace,$SName,$SAge,$SSex,$SPhone,$SIDnum){
 		$Add = new staff;
 		$Add->Spower = $Spower;

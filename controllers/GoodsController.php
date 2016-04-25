@@ -1,7 +1,7 @@
 <?php
 class GoodsController extends CController
 {
-	//货物管理页面渲染
+	//货物管理页面渲染++
 	public function actionGoods()
 	{
 		$this->layout = false;
@@ -12,7 +12,8 @@ class GoodsController extends CController
 	public function actionAddGoods()
 	{
 		if(isset($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid'])&&Yii::app()->session['SID']){
-			$AddGoods = goods::model()->AddGoods($Gid,$GName,$GPrice,$GQuantity,$GToplimit,$GLowerlimit,$GWid);
+			
+			$AddGoods = goods::model()->AddGoods($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid']);
 			
 			if($AddGoods == true){
 				$UpdateLog = Log::model()->AddLog(Yii::app()->session['SID'],52);
@@ -65,7 +66,7 @@ class GoodsController extends CController
 	//修改货物信息
 	public function actionUpdateGoods()
 	{
-		if(isset($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid'])||Yii::app()->session['SID']){
+		if(isset($_POST['GID'],$_POST['GName'],$_POST['GPrice'],$_POST['GQuantity'],$_POST['GToplimit'],$_POST['GLowerlimit'],$_POST['GWid'])&&Yii::app()->session['SID']){
 			
 			$Gid = $_POST['GID'];
 			$GName = $_POST['GName'];
@@ -103,7 +104,7 @@ class GoodsController extends CController
 	public function actionDeleteGoods()
 	{
 		if(isset($_POST['Gid'])&&Yii::app()->session['SID']){
-			
+			$Gid = $_POST['Gid'];
 			$q = goods::model()->DeleteGoods($Gid);
 			if($q == false){
 				$re = array(
